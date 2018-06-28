@@ -1,0 +1,43 @@
+{
+  "name": "lu-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config build/webpack.config.dev.js --hot",
+    "build": "webpack --config build/webpack.config.prod.js --display-used-exports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuSuguru/lu-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuSuguru/lu-cli/issues"
+  },
+  "homepage": "https://github.com/LuSuguru/lu-cli#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.9.0",
+    "object-assign": "^4.1.1",
+    "promise": "^8.0.1",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "eslint-loader": "^2.0.0",
+    "file-loader": "^1.1.11",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.12.2",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
