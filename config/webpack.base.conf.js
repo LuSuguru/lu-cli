@@ -1,8 +1,5 @@
-const path = require('webpack')
-const DefinePlugin = require('webpack/lib/DefinePlugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 const autoprefixer = require('autoprefixer')
-const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin')
 
 module.exports = {
   entry: [
@@ -11,13 +8,33 @@ module.exports = {
   ],
 
   output: {
+    // 热加载不能使用chunkhash
+    filename: 'dist/bundle.js',
+    chunkFilename: 'dist/[name]_[hash:8].js',
+    // path: path.resolve(__dirname, 'dist')
+  },
+
+  watch: true,
+  // 监听模式运行时的参数
+  // 在开启监听模式时，才有意义
+  watchOptions: {
+    // 不监听的文件或文件夹，支持正则匹配
+    ignored: /node_modules/,
+    // 监听到变化发生后会等300ms再去执行动作，防止文件更新太快导致重新编译频率太高
+    aggregateTimeout: 300,
+    // 判断文件是否发生变化是通过不停的去询问系统指定文件有没有变化实现的
+    poll: 1000
   },
 
   resolve: {
-
+    alias: {
+      assets: path.resolve(__dirname, '../src/assets'),
+      components: path.resolve(__dirname, '../src/components')
+    },
+    extensions: ['.js', '.jsx']
   },
 
-  modules: {
+  module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -39,11 +56,7 @@ module.exports = {
             include: path.resolve(__dirname, '../src')
           },
           {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-          },
-          {
-            test: /\.scss$/,
+            test: /\.(sc|c)ss$/,
             use: ['style-loader', 'css-loader',
               {
                 loader: require.resolve('postcss-loader'),
@@ -80,6 +93,7 @@ module.exports = {
             }
           }
         ]
-      }]
+      }
+    ]
   }
 }
