@@ -6,15 +6,16 @@ const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const UglifyESPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+
 const autoprefixer = require('autoprefixer')
 
 module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: 'static/js/[name].[chunkhash:8].js',
-    chunkFilename: 'static/js/[name].[chunkhash:8].js',
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: '/'
   },
 
@@ -24,24 +25,24 @@ module.exports = merge(baseWebpackConfig, {
   },
 
   optimization: {
-    minimizer: new ParallelUglifyPlugin({
-      cacheDir: path.resolve(__dirname, '../webpack_cache'),
-      uglifyJS: {
-        output: {
-          // 最紧凑的输出
-          beautify: false,
-          // 删除所有的注释
-          comments: false,
-        },
-        compress: {
-          // 在UglifyJs删除没有用到的代码时不输出警告
-          warnings: false,
-          // 删除所有的 `console` 语句，可以兼容ie浏览器
-          drop_console: true,
-          comparisons: false
+    minimize: true,
+    minimizer: [
+      new UglifyESPlugin({
+        cache: path.resolve(__dirname, '../webpack_cache'),
+        uglifyOptions: {
+          output: {
+            beautify: false, // 最紧凑的输出
+            comments: false, // 删除所有的注释
+          },
+          compress: {
+            warnings: false, // 在UglifyJs删除没有用到的代码时不输出警告
+            drop_console: true, // 删除所有的 `console` 语句，可以兼容ie浏览器
+            comparisons: false
+          }
         }
-      }
-    }), //取代 new UglifyJsPlugin(/* ... */)
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ],
     providedExports: true,
     usedExports: true,
 
@@ -67,7 +68,7 @@ module.exports = merge(baseWebpackConfig, {
           priority: -10
         }
       }
-    },
+    }
   },
 
   module: {
@@ -75,12 +76,7 @@ module.exports = merge(baseWebpackConfig, {
       oneOf: [{
         test: /\.(sc|c)ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              // publicPath: '../'
-            }
-          }, 'css-loader',
+          { loader: MiniCssExtractPlugin.loader, }, 'css-loader',
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -107,7 +103,7 @@ module.exports = merge(baseWebpackConfig, {
     // 防止每次hashname都更新
     new HashedModuleIdsPlugin(),
     // 清空dist
-    new CleanWebpackPlugin('dist', { root: path.resolve(__dirname, '../') }),
+    new CleanWebpackPlugin('build', { root: path.resolve(__dirname, '../') }),
 
     // 配置生产环境的全局变量
     new DefinePlugin({
@@ -118,7 +114,7 @@ module.exports = merge(baseWebpackConfig, {
 
     // 生成自动引用文件的html模板
     new HtmlWebpackPlugin({
-      template: require.resolve('../public/index.html'),
+      template: require.resolve('../index.html'),
       inject: true,
       minify: { // 压缩生成的html
         removeComments: true,
@@ -135,12 +131,9 @@ module.exports = merge(baseWebpackConfig, {
     }),
 
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[id].css',
       allChunks: true // 将按需加载里的css提取出来
-    }),
-
-    // 增加输出分析
-    // new BundleAnalyzerPlugin()
+    })
   ]
 })

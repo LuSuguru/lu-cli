@@ -38,14 +38,13 @@ module.exports = merge(baseWebpackConfig, {
   // 本地服务器配置
   devServer: {
     // 跨域代理
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://ticket.xiyoukeji.com/home',  //8092
-    //     pathRewrite: { '^/api': '' },
-    //     secure: false,
-    //     changeOrigin: true
-    //   }
-    // },
+    proxy: {
+      '/api': {
+        target: 'http://47.97.114.190:8080',
+        secure: false,
+        changeOrigin: true
+      }
+    },
     historyApiFallback: true, //不跳转，在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
     progress: true
   }
