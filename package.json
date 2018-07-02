@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LuSuguru/clip-cli.git"
+    "url": "git+https://github.com/LuSuguru/clip-init.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LuSuguru/clip-cli/issues"
+    "url": "https://github.com/LuSuguru/clip-init/issues"
   },
-  "homepage": "https://github.com/LuSuguru/clip-cli#readme",
+  "homepage": "https://github.com/LuSuguru/clip-init#readme",
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
