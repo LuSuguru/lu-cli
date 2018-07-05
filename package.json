@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config config/webpack.dev.conf.js --mode=none --quiet",
+    "start": "node config/devServer.js",
     "build": "webpack --config config/webpack.prod.conf.js --display-used-exports --mode=none",
     "analyzer": "webpack --config config/analyzer.js --mode=none"
   },

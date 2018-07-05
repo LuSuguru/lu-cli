@@ -2,10 +2,12 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
-  entry: [
-    require.resolve('./polyfill'),
-    require.resolve('../src/main.js')
-  ],
+  entry: {
+    app: [
+      require.resolve('./polyfill'),
+      require.resolve('../src/main.js')
+    ]
+  },
 
   output: {
     // 热加载不能使用chunkhash
