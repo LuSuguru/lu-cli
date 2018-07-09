@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin')
 const Dashboard = require('webpack-dashboard')
-// const DashboardPlugin = require('webpack-dashboard/plugin')
-// const dashboard = new Dashboard()
+const DashboardPlugin = require('webpack-dashboard/plugin')
+const dashboard = new Dashboard()
 
 Object.keys(baseWebpackConfig.entry).forEach(name => {
   baseWebpackConfig.entry[name] = ['./config/devClient'].concat(baseWebpackConfig.entry[name])
@@ -16,6 +16,8 @@ module.exports = merge(baseWebpackConfig, {
     namedModules: true,
     namedChunks: true
   },
+
+  mode: 'none',
 
   devtool: '#cheap-module-eval-source-map',
 
@@ -38,6 +40,6 @@ module.exports = merge(baseWebpackConfig, {
       }
     }),
 
-    // new DashboardPlugin(dashboard.setData)
+    new DashboardPlugin(dashboard.setData)
   ]
 })
