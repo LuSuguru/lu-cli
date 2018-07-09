@@ -58,19 +58,19 @@ const proxy = {
 ```
 project
 │   
-└───config 配置文件 
+└─── config 配置文件 
 │ 
-└─── build 打包文件
+└─── build 打包文件
 │ 
-└─── src   业务文件
+└─── src   业务文件
       │ 
-      └─── assets 图片等静态资源
+      └─── assets 图片等静态资源
       │   
       └─── components 公共组件 
       │ 
-      └─── pages  页面
+      └─── pages  页面
       │ 
-      └─── styles 样式文件
+      └─── styles 样式文件
       │ 
-      └─── app.jsx 入口，这里为第一层路由页
+      └─── app.jsx 入口，这里为第一层路由页
 ```
