@@ -1,4 +1,4 @@
-'use strict'
+
 
 if (typeof Promise === 'undefined') {
   require('promise/lib/rejection-tracking').enable()

@@ -25,9 +25,9 @@ module.exports = function (watchFile, app) {
 
   // 监听文件修改重新加载代码
   // 配置热更新
-  chokidar.watch(path.resolve(watchFile)).on('all', (event, path) => {
+  chokidar.watch(path.resolve(watchFile)).on('all', () => {
     try {
-      require(watchFile)   // 热更新先引用，冒烟，实时编辑报错，错误语法避免 crash
+      require(watchFile) // 热更新先引用，冒烟，实时编辑报错，错误语法避免 crash
       cleanCache(watchFile) // 确认没有问题进行热更新
       mocks = require(watchFile)
 
@@ -44,7 +44,7 @@ module.exports = function (watchFile, app) {
     if (req.method === 'GET') {
       body = req.query
     } else if (req.method === 'POST') {
-      body = req.body
+      ({ body } = req)
     }
 
     if (mocks[proxyURL]) {
