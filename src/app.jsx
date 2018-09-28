@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import qs from 'querystring'
 
-import './style.scss'
+import './style.less'
 import './styles/reset.css'
 
 export default class extends PureComponent {
@@ -20,7 +20,7 @@ export default class extends PureComponent {
       .then(response => response.json())
       .then(data => {
         this.setState({ ceshi: data.text })
-      });
+      })
 
     fetch('/repos/hello.do')
   }

@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 
 export default function asyncComponent(importComponent, newProps) {
-
   class AsyncComponent extends PureComponent {
     state = { component: null }
 

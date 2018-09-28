@@ -4,8 +4,8 @@ const webpack = require('webpack')
 const bodyParser = require('body-parser')
 // const proxyMiddleware = require('http-proxy-middleware')
 
-const webpackConfig = require('./webpack.dev.conf')
-const apiMocker = require('./apiMocker')
+const webpackConfig = require('../config/webpack.dev.conf')
+const apiMocker = require('../config/apiMocker')
 
 webpackConfig.mode = 'none'
 
@@ -13,7 +13,7 @@ const app = express()
 const compiler = webpack(webpackConfig)
 
 // 端口
-const port = 3536
+const port = 9999
 
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
@@ -21,14 +21,6 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 })
 
 const hotMiddleware = require('webpack-hot-middleware')(compiler, { log: () => { } })
-
-// 修改html模板时改变页面
-compiler.plugin('compilation', compilation => {
-  compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
-    hotMiddleware.publish({ action: 'reload' })
-    cb()
-  })
-})
 
 // 设置代理
 // app.use(proxyMiddleware('', {}))

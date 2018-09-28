@@ -7,7 +7,6 @@ const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyESPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-
 const autoprefixer = require('autoprefixer')
 
 module.exports = merge(baseWebpackConfig, {
@@ -40,7 +39,11 @@ module.exports = merge(baseWebpackConfig, {
           }
         }
       }),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          autoprefixer: { remove: false } // 添加对autoprefixer的配置
+        }
+      })
     ],
     providedExports: true,
     usedExports: true,
@@ -73,7 +76,7 @@ module.exports = merge(baseWebpackConfig, {
   module: {
     rules: [{
       oneOf: [{
-        test: /\.scss$/,
+        test: /\.(le|c)ss$/,
         use: [
           { loader: MiniCssExtractPlugin.loader, }, 'css-loader',
           {
@@ -93,7 +96,7 @@ module.exports = merge(baseWebpackConfig, {
                 }),
               ],
             },
-          }, 'sass-loader']
+          }, 'less-loader']
       }]
     }]
   },

@@ -51,11 +51,7 @@ module.exports = {
             include: path.resolve(__dirname, '../src')
           },
           {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-          },
-          {
-            test: /\.scss$/,
+            test: /\.(c|le)ss$/,
             use: ['style-loader', 'css-loader',
               {
                 loader: require.resolve('postcss-loader'),
@@ -74,7 +70,7 @@ module.exports = {
                     }),
                   ],
                 },
-              }, 'sass-loader']
+              }, 'less-loader']
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -85,7 +81,7 @@ module.exports = {
             },
           },
           {
-            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.scss$/],
+            exclude: [/\.js$/, /\.html$/, /\.json$/, /\.less$/],
             loader: 'file-loader',
             options: {
               name: './dist/[name].[hash:8].[ext]',
