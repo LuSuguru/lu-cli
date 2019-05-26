@@ -31,12 +31,12 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.(js|jsx)$/,
-        enforce: 'pre',
-        use: ['eslint-loader'],
-        include: path.resolve(__dirname, '../src')
-      },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   enforce: 'pre',
+      //   use: ['eslint-loader'],
+      //   include: path.resolve(__dirname, '../src')
+      // },
       {
         oneOf: [
           {
@@ -44,7 +44,6 @@ module.exports = {
             use: [{
               loader: 'babel-loader',
               options: {
-                // 将 babel 编译过的模块缓存在 webpack_cache 目录下，下次优先复用
                 cacheDirectory: './webpack_cache/',
               },
             }],
