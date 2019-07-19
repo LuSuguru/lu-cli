@@ -51,7 +51,7 @@ module.exports = merge(baseWebpackConfig, {
       inject: true,
     }),
 
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
       }
@@ -60,15 +60,11 @@ module.exports = merge(baseWebpackConfig, {
 
   devServer: {
     compress: true,
-<<<<<<< HEAD
     port: utils.port,
     allowedHosts: [
       '.52shangou.com'
     ],
     publicPath: `http://localhost:${utils.port}/`,
-=======
-    port: 3000,
->>>>>>> 8c902dc146f059694b14e1a8de9fff5b225b6711
     clientLogLevel: 'none',
     hot: true,
     stats: {
