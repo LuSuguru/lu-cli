@@ -386,6 +386,13 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-syntax-typescript@^7.2.0":
+  version "7.3.3"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-syntax-typescript/download/@babel/plugin-syntax-typescript-7.3.3.tgz#a7cc3f66119a9f7ebe2de5383cce193473d65991"
+  integrity sha1-p8w/ZhGan36+LeU4PM4ZNHPWWZE=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
 "@babel/plugin-transform-arrow-functions@^7.2.0":
   version "7.2.0"
   resolved "https://registry.npm.taobao.org/@babel/plugin-transform-arrow-functions/download/@babel/plugin-transform-arrow-functions-7.2.0.tgz#9aeafbe4d6ffc6563bf8f8372091628f00779550"
@@ -665,6 +672,15 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-transform-typescript@^7.3.2":
+  version "7.5.5"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-transform-typescript/download/@babel/plugin-transform-typescript-7.5.5.tgz#6d862766f09b2da1cb1f7d505fe2aedab6b7d4b8"
+  integrity sha1-bYYnZvCbLaHLH31QX+Ku2ra31Lg=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.5.5"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-typescript" "^7.2.0"
+
 "@babel/plugin-transform-unicode-regex@^7.4.4":
   version "7.4.4"
   resolved "https://registry.npm.taobao.org/@babel/plugin-transform-unicode-regex/download/@babel/plugin-transform-unicode-regex-7.4.4.tgz#ab4634bb4f14d36728bf5978322b35587787970f"
@@ -741,6 +757,14 @@
     "@babel/plugin-transform-react-jsx-self" "^7.0.0"
     "@babel/plugin-transform-react-jsx-source" "^7.0.0"
 
+"@babel/preset-typescript@^7.3.3":
+  version "7.3.3"
+  resolved "https://registry.npm.taobao.org/@babel/preset-typescript/download/@babel/preset-typescript-7.3.3.tgz#88669911053fa16b2b276ea2ede2ca603b3f307a"
+  integrity sha1-iGaZEQU/oWsrJ26i7eLKYDs/MHo=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-transform-typescript" "^7.3.2"
+
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.4.0", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5":
   version "7.5.5"
   resolved "https://registry.npm.taobao.org/@babel/runtime/download/@babel/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
@@ -781,6 +805,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@types/eslint-visitor-keys@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/@types/eslint-visitor-keys/download/@types/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
+  integrity sha1-HuMNeVRMqE1o1LPNsK9PIFZj3S0=
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/@types/events/download/@types/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -809,6 +838,43 @@
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
+
+"@typescript-eslint/eslint-plugin@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-1.12.0.tgz#96b4e08b5f998a198b8414508b1a289f9e8c549a"
+  integrity sha1-lrTgi1+ZihmLhBRQixoon56MVJo=
+  dependencies:
+    "@typescript-eslint/experimental-utils" "1.12.0"
+    eslint-utils "^1.3.1"
+    functional-red-black-tree "^1.0.1"
+    regexpp "^2.0.1"
+    tsutils "^3.7.0"
+
+"@typescript-eslint/experimental-utils@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/experimental-utils/download/@typescript-eslint/experimental-utils-1.12.0.tgz#98417ee2e0c6fe8d1e50d934a6535d9c0f4277b6"
+  integrity sha1-mEF+4uDG/o0eUNk0plNdnA9Cd7Y=
+  dependencies:
+    "@typescript-eslint/typescript-estree" "1.12.0"
+    eslint-scope "^4.0.0"
+
+"@typescript-eslint/parser@^1.11.0", "@typescript-eslint/parser@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-1.12.0.tgz#9965895ec4745578185965d63f21510f93a3f35a"
+  integrity sha1-mWWJXsR0VXgYWWXWPyFRD5Oj81o=
+  dependencies:
+    "@types/eslint-visitor-keys" "^1.0.0"
+    "@typescript-eslint/experimental-utils" "1.12.0"
+    "@typescript-eslint/typescript-estree" "1.12.0"
+    eslint-visitor-keys "^1.0.0"
+
+"@typescript-eslint/typescript-estree@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/typescript-estree/download/@typescript-eslint/typescript-estree-1.12.0.tgz#d8dd0a7cffb5e3c0c3e98714042d83e316dfc9a9"
+  integrity sha1-2N0KfP+148DD6YcUBC2D4xbfyak=
+  dependencies:
+    lodash.unescape "4.0.1"
+    semver "5.5.0"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -1912,7 +1978,7 @@ concat-stream@^1.5.0:
     readable-stream "^2.2.2"
     typedarray "^0.0.6"
 
-confusing-browser-globals@^1.0.5, confusing-browser-globals@^1.0.7:
+confusing-browser-globals@^1.0.5:
   version "1.0.7"
   resolved "https://registry.npm.taobao.org/confusing-browser-globals/download/confusing-browser-globals-1.0.7.tgz#5ae852bd541a910e7ffb2dbb864a2d21a36ad29b"
   integrity sha1-WuhSvVQakQ5/+y27hkotIaNq0ps=
@@ -2649,7 +2715,7 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-config-airbnb-base@^13.2.0:
+eslint-config-airbnb-base@^13.1.0, eslint-config-airbnb-base@^13.2.0:
   version "13.2.0"
   resolved "https://registry.npm.taobao.org/eslint-config-airbnb-base/download/eslint-config-airbnb-base-13.2.0.tgz#f6ea81459ff4dec2dda200c35f1d8f7419d57943"
   integrity sha1-9uqBRZ/03sLdogDDXx2PdBnVeUM=
@@ -2658,7 +2724,16 @@ eslint-config-airbnb-base@^13.2.0:
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
-eslint-config-airbnb@^17.1.1:
+eslint-config-airbnb-typescript@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/eslint-config-airbnb-typescript/download/eslint-config-airbnb-typescript-4.0.1.tgz#516a95d6e8c495100973b0c49daa54bff0964434"
+  integrity sha1-UWqV1ujElRAJc7DEnapUv/CWRDQ=
+  dependencies:
+    "@typescript-eslint/parser" "^1.11.0"
+    eslint-config-airbnb "^17.1.0"
+    eslint-config-airbnb-base "^13.1.0"
+
+eslint-config-airbnb@^17.1.0, eslint-config-airbnb@^17.1.1:
   version "17.1.1"
   resolved "https://registry.npm.taobao.org/eslint-config-airbnb/download/eslint-config-airbnb-17.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feslint-config-airbnb%2Fdownload%2Feslint-config-airbnb-17.1.1.tgz#2272e0b86bb1e2b138cdf88d07a3b6f4cda3d626"
   integrity sha1-InLguGux4rE4zfiNB6O29M2j1iY=
@@ -2666,13 +2741,6 @@ eslint-config-airbnb@^17.1.1:
     eslint-config-airbnb-base "^13.2.0"
     object.assign "^4.1.0"
     object.entries "^1.1.0"
-
-eslint-config-react-app@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npm.taobao.org/eslint-config-react-app/download/eslint-config-react-app-4.0.1.tgz#23fd0fd7ea89442ef1e733f66a7207674b23c8db"
-  integrity sha1-I/0P1+qJRC7x5zP2anIHZ0sjyNs=
-  dependencies:
-    confusing-browser-globals "^1.0.7"
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"
@@ -4399,6 +4467,11 @@ lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+
+lodash.unescape@4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/lodash.unescape/download/lodash.unescape-4.0.1.tgz#bf2249886ce514cda112fae9218cdc065211fc9c"
+  integrity sha1-vyJJiGzlFM2hEvrpIYzcBlIR/Jw=
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -6162,7 +6235,7 @@ regexp.prototype.flags@^1.2.0:
   dependencies:
     define-properties "^1.1.2"
 
-regexpp@^2.0.0:
+regexpp@^2.0.0, regexpp@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/regexpp/download/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
   integrity sha1-jRnTHPYySCtYkEn4KB+T28uk0H8=
@@ -6458,6 +6531,11 @@ selfsigned@^1.10.4:
   version "5.7.0"
   resolved "https://registry.npm.taobao.org/semver/download/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
   integrity sha1-eQp89v6lRZuslhELKbYEEtyP+Ws=
+
+semver@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.npm.taobao.org/semver/download/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
+  integrity sha1-3Eu8emyp2Rbe5dQ1FvAJK1j3uKs=
 
 semver@^6.1.1:
   version "6.2.0"
@@ -7143,10 +7221,17 @@ tryer@^1.0.1:
   resolved "https://registry.npm.taobao.org/tryer/download/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha1-8shUBoALmw90yfdGW4HqrSQSUvg=
 
-tslib@^1.9.0:
+tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha1-w8GflZc/sKYpc/sJ2Q2WHuQ+XIo=
+
+tsutils@^3.7.0:
+  version "3.14.0"
+  resolved "https://registry.npm.taobao.org/tsutils/download/tsutils-3.14.0.tgz#bf8d5a7bae5369331fa0f2b0a5a10bd7f7396c77"
+  integrity sha1-v41ae65TaTMfoPKwpaEL1/c5bHc=
+  dependencies:
+    tslib "^1.8.1"
 
 tty-browserify@0.0.0:
   version "0.0.0"
@@ -7184,6 +7269,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@^3.5.3:
+  version "3.5.3"
+  resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
+  integrity sha1-yDD2V/k/HqhGgZ6SkJL1/lmD6Xc=
 
 uglify-es@^3.3.4:
   version "3.3.9"

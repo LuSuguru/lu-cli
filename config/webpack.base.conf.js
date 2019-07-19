@@ -10,23 +10,17 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, '../src')
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', 'ts', 'tsx']
   },
 
   mode: 'none',
 
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   enforce: 'pre',
-      //   use: ['eslint-loader'],
-      //   include: path.resolve(__dirname, '../src')
-      // },
       {
         oneOf: [
           {
-            test: /\.(js|jsx)$/,
+            test: /\.(js|jsx|ts|tsx)$/,
             use: [{
               loader: 'babel-loader',
               options: {
