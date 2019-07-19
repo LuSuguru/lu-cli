@@ -3,26 +3,12 @@ const autoprefixer = require('autoprefixer')
 
 module.exports = {
   entry: {
-    app: [
-      require.resolve('./polyfill'),
-      require.resolve('../src/main.js')
-    ]
-  },
-
-  output: {
-    // 热加载不能使用chunkhash
-    filename: 'dist/bundle.js',
-    chunkFilename: 'dist/[name]_[hash:8].js',
-    // path: path.resolve(__dirname, 'dist')
+    app: require.resolve('../src/main.js')
   },
 
   resolve: {
     alias: {
-      assets: path.resolve(__dirname, '../src/assets'),
-      components: path.resolve(__dirname, '../src/components'),
-      pages: path.resolve(__dirname, '../src/pages'),
-      ajax: path.resolve(__dirname, '../src/ajax'),
-      utils: path.resolve(__dirname, '../src/utils')
+      '@': path.resolve(__dirname, '../src')
     },
     extensions: ['.js', '.jsx']
   },
@@ -44,7 +30,6 @@ module.exports = {
             use: [{
               loader: 'babel-loader',
               options: {
-                // 将 babel 编译过的模块缓存在 webpack_cache 目录下，下次优先复用
                 cacheDirectory: './webpack_cache/',
               },
             }],
@@ -59,15 +44,7 @@ module.exports = {
                   ident: 'postcss',
                   plugins: () => [
                     require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9',
-                      ],
-                      flexbox: 'no-2009',
-                    }),
+                    autoprefixer(),
                   ],
                 },
               }, 'less-loader']

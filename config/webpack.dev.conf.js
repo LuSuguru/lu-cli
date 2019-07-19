@@ -1,26 +1,42 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const DefinePlugin = require('webpack/lib/DefinePlugin')
-const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin')
-
-Object.keys(baseWebpackConfig.entry).forEach(name => {
-  baseWebpackConfig.entry[name] = ['webpack-hot-middleware/client?noInfo=true&reload=true'].concat(baseWebpackConfig.entry[name])
-})
+const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin, NamedChunksPlugin } = require('webpack')
+const utils = require('./utils')
 
 module.exports = merge(baseWebpackConfig, {
   optimization: {
     namedModules: true,
-    namedChunks: true
+    namedChunks: true,
+    nodeEnv: 'development',
+    splitChunks: {
+      hidePathInfo: false,
+      minSize: 10000,
+      maxAsyncRequests: Infinity,
+      maxInitialRequests: Infinity,
+    },
+    noEmitOnErrors: false,
+    checkWasmTypes: false,
   },
+
+
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 600
+  },
+
+  cache: true,
 
   devtool: 'cheap-module-eval-source-map',
 
   output: {
-    pathinfo: true // 输入代码添加额外的路径注释，提高代码可读性
+    pathinfo: true,
+    chunkFilename: '[name].js',
   },
 
   plugins: [
+    new NamedModulesPlugin(),
+    new NamedChunksPlugin(),
     new HotModuleReplacementPlugin(),
 
     // 生成自动引用文件的html模板
@@ -35,5 +51,25 @@ module.exports = merge(baseWebpackConfig, {
         NODE_ENV: JSON.stringify('development')
       }
     })
-  ]
+  ],
+
+  devServer: {
+    compress: true,
+    port: utils.port,
+    allowedHosts: [
+      '.52shangou.com'
+    ],
+    publicPath: `http://localhost:${utils.port}/`,
+    clientLogLevel: 'none',
+    hot: true,
+    stats: {
+      all: false,
+      modules: false,
+      errors: true,
+      warnings: true,
+      colors: true,
+      assets: true,
+      timings: true,
+    }
+  }
 })
