@@ -1,12 +1,10 @@
-process.env.NODE_ENV = 'production'
-
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
 const chalk = require('chalk')
 const { argv } = require('yargs')
 const webpack = require('webpack')
-const webpackConfig = require('../config/webpack.prod.conf')
+const webpackConfig = require('./webpack.prod.conf')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 if (argv.analyzer) {

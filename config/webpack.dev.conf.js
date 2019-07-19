@@ -1,8 +1,9 @@
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin, NamedChunksPlugin } = require('webpack')
 const utils = require('./utils')
+const baseWebpackConfig = require('./webpack.base.conf')
+
 
 module.exports = merge(baseWebpackConfig, {
   optimization: {
@@ -19,6 +20,7 @@ module.exports = merge(baseWebpackConfig, {
     checkWasmTypes: false,
   },
 
+  devtool: 'cheap-module-eval-source-map',
 
   watchOptions: {
     ignored: /node_modules/,
@@ -27,17 +29,21 @@ module.exports = merge(baseWebpackConfig, {
 
   cache: true,
 
-  devtool: 'cheap-module-eval-source-map',
-
   output: {
-    pathinfo: true,
+    filename: '[name].js',
     chunkFilename: '[name].js',
+    pathinfo: true,
+    publicPath: `http://localhost:${utils.port}/`,
+
   },
+
+  profile: true,
 
   plugins: [
     new NamedModulesPlugin(),
     new NamedChunksPlugin(),
     new HotModuleReplacementPlugin(),
+
 
     // 生成自动引用文件的html模板
     new HtmlWebpackPlugin({
@@ -45,8 +51,7 @@ module.exports = merge(baseWebpackConfig, {
       inject: true,
     }),
 
-    // 配置开发环境的全局变量
-    new DefinePlugin({
+    new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
       }
@@ -55,11 +60,15 @@ module.exports = merge(baseWebpackConfig, {
 
   devServer: {
     compress: true,
+<<<<<<< HEAD
     port: utils.port,
     allowedHosts: [
       '.52shangou.com'
     ],
     publicPath: `http://localhost:${utils.port}/`,
+=======
+    port: 3000,
+>>>>>>> 8c902dc146f059694b14e1a8de9fff5b225b6711
     clientLogLevel: 'none',
     hot: true,
     stats: {
