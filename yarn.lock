@@ -872,6 +872,13 @@
   resolved "https://registry.npm.taobao.org/@types/q/download/@types/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
   integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
 
+"@types/react-dom@^16.8.4":
+  version "16.8.4"
+  resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.8.4.tgz#7fb7ba368857c7aa0f4e4511c4710ca2c5a12a88"
+  integrity sha1-f7e6NohXx6oPTkURxHEMosWhKog=
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-slick@^0.23.4":
   version "0.23.4"
   resolved "https://registry.npm.taobao.org/@types/react-slick/download/@types/react-slick-0.23.4.tgz#c97e2a9e7e3d1933c68593b8e82752fab1e8ce53"

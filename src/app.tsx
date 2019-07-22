@@ -1,8 +1,8 @@
-import React from 'react'
-import { Route } from '@/interface'
+import React, { memo, ReactElement } from 'react'
+import { Route } from '@/interface/route'
 
-console.log(Route)
-
-function Ceshi(props: Route): any {
-  return <div ceshi={1} ceshi2={1} ceshi3={1} ceshi4={1} />
+function App(props: Route): ReactElement {
+  return <div />
 }
+
+export default memo(App)

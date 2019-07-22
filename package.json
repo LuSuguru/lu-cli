@@ -1,7 +1,7 @@
 {
-  "name": "1",
-  "version": "2",
-  "description": "3",
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.conf.js  --progress",
@@ -42,6 +42,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.4.4",
+    "@types/react-dom": "^16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
     "babel-loader": "^8.0.6",
