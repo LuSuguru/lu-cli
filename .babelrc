@@ -31,11 +31,11 @@
     [
       "import",
       {
-        "libraryName": "components",
+        "libraryName": "@/interface",
         "libraryDirectory": "",
-        "camel2DashComponentName": true
+        "camel2DashComponentName": false
       },
-      "components"
+      "interface"
     ]
   ],
   "presets": [

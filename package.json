@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/LuSuguru/clip-init#readme",
   "dependencies": {
+    "antd": "^3.20.5",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
     "core-js": "2",
@@ -82,7 +83,10 @@
     "not dead"
   ],
   "eslintConfig": {
-    "extends": ["airbnb", "plugin:@typescript-eslint/recommended"],
+    "extends": [
+      "airbnb",
+      "plugin:@typescript-eslint/recommended"
+    ],
     "parser": "@typescript-eslint/parser",
     "env": {
       "browser": true,
@@ -166,8 +170,16 @@
       "import/no-cycle": 0,
       "react/no-multi-comp": 0,
       "react/no-did-update-set-state": 0,
-      "@typescript-eslint/indent": ["error", 2],
+      "@typescript-eslint/indent": [
+        "error",
+        2
+      ],
       "@typescript-eslint/no-var-requires": 0,
+      "@typescript-eslint/member-delimiter-style": [
+        "error",
+        0
+      ],
+      "@typescript-eslint/no-explicit-any": 0,
       "semi": [
         "error",
         "never"
