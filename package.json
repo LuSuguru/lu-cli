@@ -1,5 +1,5 @@
 {
-  "name": "{{projectName}}",
+  "name": "ceshi",
   "version": "{{projectVersion}}",
   "description": "{{projectDescription}}",
   "main": "index.js",
@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/LuSuguru/clip-init#readme",
   "dependencies": {
+    "@babel/runtime": "^7.7.2",
     "antd": "^3.20.5",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
-    "core-js": "2",
+    "core-js": "^3.4.1",
     "object-assign": "^4.1.1",
     "promise": "^8.0.3",
     "react": "^16.8.6",
@@ -31,8 +32,8 @@
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-decorators": "^7.2.3",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
@@ -41,7 +42,6 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
-    "@babel/runtime": "^7.4.4",
     "@types/react-dom": "^16.8.4",
     "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@typescript-eslint/parser": "^1.12.0",
@@ -78,10 +78,9 @@
     "webpack-merge": "^4.2.1"
   },
   "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
+    ">0.25%",
+    "not ie 11",
+    "not op_mini all"
   ],
   "eslintConfig": {
     "extends": [
