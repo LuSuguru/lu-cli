@@ -1,12 +1,12 @@
 const path = require('path')
 const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyESPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const autoprefixer = require('autoprefixer')
+
+const baseWebpackConfig = require('./webpack.base.conf')
 
 module.exports = merge(baseWebpackConfig, {
   output: {
@@ -72,26 +72,6 @@ module.exports = merge(baseWebpackConfig, {
         }
       }
     }
-  },
-
-  module: {
-    rules: [{
-      oneOf: [{
-        test: /\.(le|c)ss$/,
-        use: [
-          { loader: MiniCssExtractPlugin.loader, }, 'css-loader',
-          {
-            loader: require.resolve('postcss-loader'),
-            options: {
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-flexbugs-fixes'),
-                autoprefixer(),
-              ],
-            },
-          }, 'less-loader']
-      }]
-    }]
   },
 
   plugins: [

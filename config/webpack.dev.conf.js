@@ -4,7 +4,6 @@ const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin, NamedChunk
 const utils = require('./utils')
 const baseWebpackConfig = require('./webpack.base.conf')
 
-
 module.exports = merge(baseWebpackConfig, {
   optimization: {
     namedModules: true,
