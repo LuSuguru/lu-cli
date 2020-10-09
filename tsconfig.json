@@ -8,6 +8,8 @@
     "preserveConstEnums": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "isolatedModules": true,
+    "allowJs": false,
     "jsx": "preserve",
     "lib": [
       "dom",
