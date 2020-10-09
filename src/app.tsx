@@ -1,7 +1,8 @@
 import React, { Suspense, memo } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { Route as IRoute } from './interface/route'
 import { Loading } from '@/components'
+
+import { Route as IRoute } from './interface/route'
 import routes from './config/route'
 
 function App() {

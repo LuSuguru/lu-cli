@@ -54,8 +54,44 @@ module.exports = {
               {
                 loader: require.resolve('postcss-loader'),
                 options: {
-                  ident: 'postcss',
-                  plugins: () => [
+                  postcssOptions: {
+                    plugins: [
+                      require('postcss-flexbugs-fixes'),
+                      autoprefixer({
+                        overrideBrowserslist: [
+                          '>1%',
+                          'last 4 versions',
+                          'Firefox ESR',
+                          'not ie < 9',
+                        ],
+                        flexbox: 'no-2009',
+                      }),
+                    ],
+                  }
+                },
+              },
+              {
+                loader: 'less-loader',
+                options: {
+                  lessOptions: {
+                    javascriptEnabled: true
+                  }
+                }
+              }]
+          },
+          {
+            test: /\.(c|le)ss$/,
+            use: [{
+              loader: isDev
+                ? require.resolve('style-loader')
+                : MiniCssExtractPlugin.loader
+            },
+              'css-loader',
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                postcssOptions: {
+                  plugins: [
                     require('postcss-flexbugs-fixes'),
                     autoprefixer({
                       overrideBrowserslist: [
@@ -67,45 +103,15 @@ module.exports = {
                       flexbox: 'no-2009',
                     }),
                   ],
-                },
-              },
-              {
-                loader: 'less-loader',
-                options: {
-                  javascriptEnabled: true
                 }
-              }]
-          },
-          {
-            test: /\.(c|le)ss$/,
-            use: [{
-              loader: isDev
-                ? require.resolve('style-loader')
-                : MiniCssExtractPlugin.loader
-            },
-            'css-loader',
-            {
-              loader: require.resolve('postcss-loader'),
-              options: {
-                ident: 'postcss',
-                plugins: () => [
-                  require('postcss-flexbugs-fixes'),
-                  autoprefixer({
-                    overrideBrowserslist: [
-                      '>1%',
-                      'last 4 versions',
-                      'Firefox ESR',
-                      'not ie < 9',
-                    ],
-                    flexbox: 'no-2009',
-                  }),
-                ],
               },
             },
             {
               loader: 'less-loader',
               options: {
-                javascriptEnabled: true
+                lessOptions: {
+                  javascriptEnabled: true
+                }
               }
             }]
           },
