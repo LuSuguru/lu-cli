@@ -23,12 +23,16 @@
       "node_modules/@types"
     ],
     "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
       "@/*": [
         "src/*"
       ],
     }
   },
+  "include": [
+    "src/*"
+  ],
   "exclude": [
     "node_modules"
   ]

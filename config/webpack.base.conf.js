@@ -1,9 +1,5 @@
 const path = require('path')
-const autoprefixer = require('autoprefixer')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
-const { NODE_ENV } = process.env
-const isDev = NODE_ENV === 'development'
+const { cssModule, cssNormal } = require('./css-module')
 
 module.exports = {
   entry: {
@@ -35,85 +31,11 @@ module.exports = {
           },
           {
             test: /\.module\.(c|le)ss$/,
-            use: [
-              {
-                loader: isDev
-                  ? require.resolve('style-loader')
-                  : MiniCssExtractPlugin.loader
-              },
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: {
-                    localIdentName: '[local]___[hash:base64:5]',
-
-                  },
-                  localsConvention: 'camelCaseOnly'
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  postcssOptions: {
-                    plugins: [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        overrideBrowserslist: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9',
-                        ],
-                        flexbox: 'no-2009',
-                      }),
-                    ],
-                  }
-                },
-              },
-              {
-                loader: 'less-loader',
-                options: {
-                  lessOptions: {
-                    javascriptEnabled: true
-                  }
-                }
-              }]
+            use: cssModule
           },
           {
             test: /\.(c|le)ss$/,
-            use: [{
-              loader: isDev
-                ? require.resolve('style-loader')
-                : MiniCssExtractPlugin.loader
-            },
-              'css-loader',
-            {
-              loader: require.resolve('postcss-loader'),
-              options: {
-                postcssOptions: {
-                  plugins: [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      overrideBrowserslist: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9',
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                  ],
-                }
-              },
-            },
-            {
-              loader: 'less-loader',
-              options: {
-                lessOptions: {
-                  javascriptEnabled: true
-                }
-              }
-            }]
+            use: cssNormal
           },
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],

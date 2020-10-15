@@ -84,14 +84,12 @@ a:hover {
 input:-webkit-autofill {
   background-color: none;
   background-image: none;
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
   color: #000;
 }
 
 button {
   appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
 }
 
 ul,
@@ -117,6 +115,6 @@ summary {
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }

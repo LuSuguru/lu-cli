@@ -45,6 +45,8 @@ module.exports = {
       }
     ],
     '@babel/preset-typescript',
-    '@babel/react'
+    ['@babel/preset-react', {
+      runtime: 'automatic'
+    }]
   ]
 }

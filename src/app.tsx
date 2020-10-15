@@ -1,4 +1,4 @@
-import React, { Suspense, memo } from 'react'
+import { Suspense, memo } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { Loading } from '@/components'
 

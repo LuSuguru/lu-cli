@@ -1,12 +1,11 @@
-import React from 'react'
-import './style.less'
+import style from './style.module.less'
 
 export default () => (
-  <div className="general-loading">
-    <div className="dot-container">
-      <div className="dot" />
-      <div className="dot" />
-      <div className="dot" />
-    </div>
+  <div className={style.loading}>
+    <ul className={style.container}>
+      <li className={style.dot} />
+      <li className={style.dot} />
+      <li className={style.dot} />
+    </ul>
   </div>
 )
