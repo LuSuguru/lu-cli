@@ -1,48 +1,49 @@
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin, NamedChunksPlugin } = require('webpack')
-const utils = require('./utils')
+const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack')
+const path = require('path')
+
 const baseWebpackConfig = require('./webpack.base.conf')
+const utils = require('./utils')
 
 module.exports = merge(baseWebpackConfig, {
   optimization: {
-    namedModules: true,
-    namedChunks: true,
-    nodeEnv: 'development',
+    moduleIds: 'named',
+    chunkIds: 'named',
     splitChunks: {
       hidePathInfo: false,
       minSize: 10000,
       maxAsyncRequests: Infinity,
       maxInitialRequests: Infinity,
     },
-    noEmitOnErrors: false,
-    checkWasmTypes: false,
+    emitOnErrors: true,
   },
 
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
 
   watchOptions: {
     ignored: /node_modules/,
     aggregateTimeout: 600
   },
 
-  cache: true,
-
   output: {
     filename: '[name].js',
     chunkFilename: '[name].js',
     pathinfo: true,
-    publicPath: `http://localhost:${utils.port}/`,
-
   },
 
-  profile: true,
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.join(__dirname, '../.temp_cache'),
+    version: '0.0.1' // 更改配置后手动更改版本号，让缓存失效
+  },
+
+  infrastructureLogging: {
+    level: 'none',
+  },
 
   plugins: [
-    new NamedModulesPlugin(),
-    new NamedChunksPlugin(),
     new HotModuleReplacementPlugin(),
-
 
     // 生成自动引用文件的html模板
     new HtmlWebpackPlugin({
@@ -60,20 +61,9 @@ module.exports = merge(baseWebpackConfig, {
   devServer: {
     compress: true,
     port: utils.port,
-    allowedHosts: [
-      '.52shangou.com'
-    ],
-    publicPath: `http://localhost:${utils.port}/`,
-    clientLogLevel: 'none',
+    historyApiFallback: true,
     hot: true,
-    stats: {
-      all: false,
-      modules: false,
-      errors: true,
-      warnings: true,
-      colors: true,
-      assets: true,
-      timings: true,
-    }
+    liveReload: false,
+    open: true
   }
 })

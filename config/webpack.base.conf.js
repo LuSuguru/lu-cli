@@ -1,5 +1,14 @@
 const path = require('path')
+const chalk = require('chalk')
+const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin')
+
 const { cssModule, cssNormal } = require('./css-module')
+
+const barLeft = chalk.bold('[')
+const barRight = chalk.bold(']')
+const green = '\u001b[42m \u001b[0m'
+const red = '\u001b[41m \u001b[0m'
+const preamble = chalk.cyan.bold('  build ') + barLeft
 
 module.exports = {
   entry: {
@@ -14,6 +23,8 @@ module.exports = {
   },
 
   mode: 'none',
+
+  target: 'web',
 
   module: {
     rules: [
@@ -55,5 +66,13 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new ProgressBarWebpackPlugin({
+      format: preamble + ':bar' + barRight + chalk.green.bold(' :percent') + '  :msg',
+      complete: green,
+      incomplete: red,
+      total: 20
+    })
+  ]
 }

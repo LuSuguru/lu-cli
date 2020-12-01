@@ -3,8 +3,8 @@ const { merge } = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const DefinePlugin = require('webpack/lib/DefinePlugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const UglifyESPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const baseWebpackConfig = require('./webpack.base.conf')
 
@@ -23,43 +23,46 @@ module.exports = merge(baseWebpackConfig, {
   optimization: {
     minimize: true,
     minimizer: [
-      new UglifyESPlugin({
-        cache: path.resolve(__dirname, '../webpack_cache'),
-        uglifyOptions: {
+      new TerserPlugin({
+        terserOptions: {
           output: {
             beautify: false,
             comments: false,
           },
           compress: {
-            warnings: false,
             drop_console: true,
             comparisons: false
           }
         }
       }),
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          autoprefixer: { remove: false } // 添加对autoprefixer的配置
+      new CssMinimizerPlugin({
+        minimizerOptions: {
+          preset: ['default', {
+            autoprefixer: { remove: false } // 添加对autoprefixer的配置
+          }]
         }
       })
     ],
-    providedExports: true,
-    usedExports: true,
-
     sideEffects: true,
     concatenateModules: true,
 
-    noEmitOnErrors: true,
+    emitOnErrors: false,
 
-    moduleIds: 'hashed',
+    chunkIds: 'deterministic',
+    mangleExports: 'deterministic',
+    moduleIds: 'deterministic',
 
     splitChunks: {
-      chunks: "async",
+      chunks: 'async',
       minSize: 30000,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
-      name: true,
+      name(module, chunks) {
+        const moduleFileName = module.identifier().split('/').reduceRight(item => item)
+        const allChunksNames = chunks.map((item) => item.name).join('~')
+        return `${allChunksNames}-${moduleFileName}`
+      },
       cacheGroups: {
         default: {
           minChunks: 2,
@@ -103,7 +106,6 @@ module.exports = merge(baseWebpackConfig, {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[name].[contenthash].css',
-      allChunks: true // 将按需加载里的css提取出来
     })
   ]
 })

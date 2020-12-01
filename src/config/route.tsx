@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 
-const Main = lazy(() => import(/* webpackChunkName:"main" */'@/pages/main'))
+const Main = lazy(() => import('@/pages/main'))
 
 export default [
   {
